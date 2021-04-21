@@ -70,7 +70,7 @@ LRESULT CALLBACK LowLevelMouseProc(int nCode, WPARAM wParam, LPARAM lParam)
 	return CallNextHookEx(hMouseHook, nCode, wParam, lParam);
 }
 
-void main()
+int main()
 {
 	hMouseHook = SetWindowsHookEx(WH_MOUSE_LL, &LowLevelMouseProc, GetModuleHandle(NULL), 0);
 
@@ -83,4 +83,6 @@ void main()
 
 	UnhookWindowsHookEx(hMouseHook);
 	ClipCursor(NULL);
+
+	return 0;
 }
